@@ -19,7 +19,7 @@ def create():
     #checking wether private or public
     if (visibility == "private"):
         user.create_repo(folder, private=True)
-    else:
+    elif (visibility == "public"):
         #creating public repo
         user.create_repo(folder)
 
