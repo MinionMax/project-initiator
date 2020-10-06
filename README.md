@@ -9,6 +9,7 @@ for the script to work you will need the following:
 - git
 - python3
 - pip
+
 once you have all of the above installed you can start:
 
 open up the terminal.
