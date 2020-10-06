@@ -78,10 +78,10 @@ Then call create followed by your project name and your visibility settings (use
 
 A correct call for a private repo should look like this:
 ```shell
-projectinit ehre private
+create ehre private
 ```
 Public repo:
 ```shell
-projectinit ehre 
+create ehre public
 ```
 _happy coding_
