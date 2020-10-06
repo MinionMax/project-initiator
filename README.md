@@ -2,6 +2,7 @@
 
 ## about
 the project initiator is a simple automation script to run from your command line.
+it creates a folder in your destined projects folder, creates a readme and commits it to your github account.
 at the time being it's only compatible with the shell terminal.
 
 ## installation
