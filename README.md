@@ -49,8 +49,10 @@ Once you have generated the token paste it between the double quotes in the TOKE
 Next you have to copy the path to the create.py script (path/to/create.py) and paste it to the SCRIPTPATH row.
 To finish up grab the path to your projects folder (your new projects will be saved here) and paste it to the DESTPATH row.
 You can optionally enter the name of your IDE to have the project opened for you as well:
+
 __visual studio code__: code, __atom__: atom, __sublime text__: subl, __textmate__: mate.
 By default this is set to visual studio code.
+
 In case the command doesn't work for you check if you have the _shell commands_ installed.
 __save the changes!__
 
