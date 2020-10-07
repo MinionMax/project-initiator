@@ -2,8 +2,7 @@
 
 function create(){
     cd
-    #enter the path to the enclosing folder before the .env
-    source .env
+    source ~/project-initiator/.env
     python3 $SCRIPTPATHCREATE $1 $2
     cd $DESTPATH$1
     git init
@@ -18,8 +17,7 @@ function create(){
 
 function remove(){
     cd
-    #enter the path to the enclosing folder before the .env
-    source .env
+    source ~/project-initiator/.env
     python3 $SCRIPTPATHREMOVE $1
     rm -rf $DESTPATH$1
     echo "successfully deleted $1 project!"

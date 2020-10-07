@@ -16,7 +16,7 @@ Once you have all of the above installed you can start:
 Open up the terminal.
 First clone the repository:
 ```shell
-git clone https://github.com/MinionMax/project-initiator
+git clone 
 ```
 Then navigate to the folder:
 ```shell
@@ -44,10 +44,8 @@ code .env
 ```
 In case you are unable to open it follow this [tutorial](https://stackoverflow.com/questions/29955500/code-not-working-in-command-line-for-visual-studio-code-on-osx-mac).
 In the .env file enter your github username between the double quotes in the USERNAME row.
-For the token (in case you don't have one yet) you can follow this [tutorial](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token).
-The token will have to have access to: admin:public_key and delete_repo.
+For the token (in case you don't have one yet) you can follow this [tutorial](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token). the token will have to have access to: admin:public_key and delete_repo.
 Once you have generated the token paste it between the double quotes in the TOKEN row.
-Next you have to copy the path to the create.py script (path/to/create.py) and paste it to the SCRIPTPATH row.
 To finish up grab the path to your projects folder (your new projects will be saved here) and paste it to the DESTPATH row.
 You can optionally enter the name of your IDE to have the project opened for you as well:
 
@@ -67,11 +65,16 @@ open ~/.bash_profile
 You can also do this in your IDE with the process i described above.
 In the .bash_profile file create an alias:
 ```shell
-alias projectinit="source path/to/project_init.sh"
+alias projectinit="source ~/project-initiator/project_init.sh"
 ```
-of course you will need to enter your own pathfile for the _create.sh_ file.
-You can enter any command you fancy, in my case I just used projectinit...
+of course you will need to enter your own pathfile for the project_init.sh file.
+You can enter any command you
 __save the changes!__
+
+## finish up!
+I wouldn't recommend moving the scripts to another folder.
+For your convenience just keep it in your root directory.
+If you are a file organization freak and want to move it anyway follow this [tutorial](https://github.com/MinionMax/project-initiator/blob/master/CUSTOMFILEPATH.md).
 
 ## usage
 To use the command simply open the terminal and type your custom command you entered in the .bash_profile file and hit return.
@@ -87,4 +90,10 @@ Public repo:
 projectinit
 create name public
 ```
+To remove your project locally and from github:
+```shell
+projectinit
+remove name
+```
+
 _happy coding_

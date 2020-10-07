@@ -1,2 +1,2 @@
-PyGithub
+PyGithubq
 python_dotenv
