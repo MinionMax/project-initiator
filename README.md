@@ -71,7 +71,7 @@ of course you will need to enter your own pathfile for the project_init.sh file.
 You can enter any command you
 __save the changes!__
 
-## finish up!
+### finish up!
 I wouldn't recommend moving the scripts to another folder.
 For your convenience just keep it in your root directory.
 If you are a file organization freak and want to move it anyway follow this [tutorial](https://github.com/MinionMax/project-initiator/blob/master/CUSTOMFILEPATH.md).
