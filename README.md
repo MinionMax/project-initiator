@@ -74,14 +74,16 @@ __save the changes!__
 
 ## usage
 To use the command simply open the terminal and type your custom command you entered in the .bash_profile file and hit return.
-Then call create followed by your project name and your visibility settings (use: private or enter nothing).
+Then call create followed by your project name and your visibility settings (use: private or public).
 
 A correct call for a private repo should look like this:
 ```shell
-create ehre private
+projectinit
+create name private
 ```
 Public repo:
 ```shell
-create ehre public
+projectinit
+create name public
 ```
 _happy coding_

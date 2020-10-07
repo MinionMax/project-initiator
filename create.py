@@ -22,6 +22,8 @@ def create():
     elif (visibility == "public"):
         #creating public repo
         user.create_repo(folder)
+    else:
+        print("PUBLIC")
 
 if __name__ == "__main__":
     create()
