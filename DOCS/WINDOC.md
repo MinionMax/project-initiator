@@ -26,5 +26,5 @@ pip install -r requirements.txt
 ```
 ### note
 Please check if you have doskey activated using "doskey help".
-If doskey responds with commands you're good to go!
+If doskey responds with commands you're good to go!<br/>
 If not please follow this [tutorial](https://superuser.com/a/1009512)
