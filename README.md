@@ -6,9 +6,9 @@ It creates a folder in your destined projects folder, creates a readme and commi
 
 ## installation
 <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/windows.svg" />
-[__mac__](https://github.com/MinionMax/project-initiator/blob/master/DOCS/MACDOC.md)
+[mac](https://github.com/MinionMax/project-initiator/blob/master/DOCS/MACDOC.md)
 <img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@v3/icons/apple.svg" />
-[__win__](https://github.com/MinionMax/project-initiator/blob/master/DOCS/WINDOC.md)
+[win](https://github.com/MinionMax/project-initiator/blob/master/DOCS/WINDOC.md)
 
 ### important note
 I wouldn't recommend moving the scripts to another folder.
