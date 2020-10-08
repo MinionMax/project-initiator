@@ -13,10 +13,13 @@ For the script to work you will need the following:
 
 Once you have all of the above installed you can start:
 
-Open up the terminal.
+Open up the terminal and navigate to your root directory:
+```shell
+cd ~
+```
 First clone the repository:
 ```shell
-git clone 
+git clone https://github.com/MinionMax/project-initiator
 ```
 Then navigate to the folder:
 ```shell
