@@ -1,4 +1,3 @@
-# Windows Build is currently under development
 ## windows installation
 For the script to work you will need the following:
 - git
