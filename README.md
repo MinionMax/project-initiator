@@ -5,7 +5,7 @@ The "project initiator" is a simple automation script to run from your command l
 It creates a folder in your destined projects folder, creates a readme and commits it to your github account. The script is available for Windows and Shell terminals.
 
 ## installation
-[__mac__]()                                             [__win__]()
+[__mac__](https://github.com/MinionMax/project-initiator/blob/master/DOCS/MACDOC.md)                                             [__win__](https://github.com/MinionMax/project-initiator/blob/master/DOCS/WINDOC.md)
 
 ### important note
 I wouldn't recommend moving the scripts to another folder.
