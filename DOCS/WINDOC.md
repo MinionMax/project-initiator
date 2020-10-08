@@ -36,7 +36,8 @@ Tap the windows key and type env and enter. Now select enviroment variables and 
 - SCRIPTPATH, simply enter the path to the enclosing folder of the scripts
 - GHUSERNAME, enter your GitHub username
 - TOKEN
-  - For the token (in case you don't have one yet) you can follow this [tutorial](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a- personal-access-token). the token will have to have access to: admin:public_key and delete_repo.
+  - For the token (in case you don't have one yet) you can follow this [tutorial]
+  (https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token). the token will have to have access to: admin:public_key and delete_repo.
 - IDE, enter one of the following:
   - __visual studio code__: code, __atom__: atom, __sublime text__: subl, __textmate__: mate.<br/>
  
