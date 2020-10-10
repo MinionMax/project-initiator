@@ -22,6 +22,7 @@ def create():
         user.create_repo(folder)
     else:
         print("PUBLIC")
+        user.create_repo(folder)
 
 if __name__ == "__main__":
     create()
