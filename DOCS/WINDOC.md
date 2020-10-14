@@ -8,7 +8,7 @@ Once you have all of the above installed you can start:
 
 Open up the command prompt and navigate to your root directory:
 ```cmd
-cd C:\users\name
+cd C:\users\%USERNAME%
 ```
 First clone the repository:
 ```cmd
@@ -16,7 +16,7 @@ git clone https://github.com/MinionMax/project-initiator
 ```
 Then navigate to the folder:
 ```cmd
-cd C:\users\name\project-initiator
+cd C:\users\%USERNAME%\project-initiator
 ```
 Install the dependencies/requirements:
 ```cmd
@@ -38,7 +38,7 @@ Tap the windows key and type env and enter. Now select enviroment variables and 
 Finally configure your command for the script, in my case I'll be using "create":
 in your user variables create a variable called "create" and link to the create.bat file e.g.:
 ```
-C:\users\%USER%\project-initiator\windows\create.bat
+C:\users\%USERNAME%\project-initiator\windows\create.bat
 ```
 do the same with the "remove command"
 also check out this [important note](https://github.com/MinionMax/project-initiator#important-note)
