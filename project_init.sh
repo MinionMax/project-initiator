@@ -8,6 +8,7 @@ function create(){
     git init
     touch README.md
     echo "# $1" >> README.md
+    touch .gitignore
     git add .
     git commit -m "Initial commit"
     git remote add origin https://github.com/$USERNAME/$1.git
