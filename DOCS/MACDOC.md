@@ -52,19 +52,18 @@ In case the command doesn't work for you check if you have the _shell commands_ 
 __save the changes!__
 
 ### shell costumization
-Without this you would have to use a source call before using the create command so let's create an alias for this.
+Without this you would have to use a source call before using the create command so let's create a command in our run control for this.
 
 Open your terminal and type:
 ```shell
-open ~/.bash_profile
+open ~/.bashrc
 ```
+If you're using z-shell open ".zshrc".
 You can also do this in your IDE with the process i described above.
-In the .bash_profile file create an alias:
+In the .bashrc file create a source call:
 ```shell
-alias projectinit="source ~/project-initiator/project_init.sh"
+source ~/project-initiator/project_init.sh
 ```
-of course you will need to enter your own pathfile for the project_init.sh file.
-You can enter any command you
 __save the changes!__
 
 ## usage
@@ -73,22 +72,18 @@ Then call create followed by your project name and your visibility settings (use
 
 A correct call for a private repo should look like this:
 ```shell
-projectinit
 create name private
 ```
 Public repo:
 ```shell
-projectinit
 create name public
 ```
 To remove your project locally and from github:
 ```shell
-projectinit
 remove name
 ```
 
 To edit or rather set up your development enviroment in one command:
 ```shell
-projectinit
 edit name
 ```
