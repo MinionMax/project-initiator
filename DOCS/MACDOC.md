@@ -86,3 +86,9 @@ To remove your project locally and from github:
 projectinit
 remove name
 ```
+
+To edit or rather set up your development enviroment in one command:
+```shell
+projectinit
+edit name
+```
