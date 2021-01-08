@@ -40,7 +40,7 @@ in your user variables create a variable called "create" and link to the create.
 ```
 C:\users\%USERNAME%\project-initiator\windows\create.bat
 ```
-do the same with the "remove command"
+do the same with the "remove", and the "edit" command.
 also check out this [important note](https://github.com/MinionMax/project-initiator#important-note)
 
 ## usage
@@ -56,4 +56,8 @@ Private repo:
 Remove repo locally and from GitHub:
 ```cmd
 %remove% name
+```
+Quickly set up development environment:
+```cmd
+%edit% name
 ```

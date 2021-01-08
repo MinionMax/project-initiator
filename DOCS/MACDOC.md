@@ -39,7 +39,7 @@ Or use your IDE to open it i.e.:
 code .env
 ```
 In case you are unable to open it follow this [tutorial](https://stackoverflow.com/questions/29955500/code-not-working-in-command-line-for-visual-studio-code-on-osx-mac).
-In the .env file enter your github username between the double quotes in the USERNAME row.
+In the .env file enter your github username between the double quotes in the GHUSERNAME row.
 For the token (in case you don't have one yet) you can follow this [tutorial](https://docs.github.com/en/free-pro-team@latest/github/authenticating-to-github/creating-a-personal-access-token). the token will have to have access to: admin:public_key and delete_repo.
 Once you have generated the token paste it between the double quotes in the TOKEN row.
 To finish up grab the path to your projects folder (your new projects will be saved here) and paste it to the DESTPATH row.

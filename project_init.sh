@@ -10,10 +10,10 @@ function create(){
     touch .gitignore
     git add .
     git commit -m "Initial commit"
-    git remote add origin https://github.com/$USERNAME/$1.git
+    git remote add origin https://github.com/$GHUSERNAME/$1.git
     git push -u origin master
     $IDE .
-    open https://github.com/$USERNAME/$1.git
+    open https://github.com/$GHUSERNAME/$1.git
     echo "successfully initiated $1 project!"
 }
 
@@ -28,5 +28,5 @@ function edit(){
     source ~/project-initiator/.env
     cd $DESTPATH$1
     $IDE .
-    open https://github.com/$USERNAME/$1.git
+    open https://github.com/$GHUSERNAME/$1.git
 }
