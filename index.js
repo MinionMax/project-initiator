@@ -59,7 +59,7 @@ async function newRepo(name, private){
         if (err) throw err;
     })
     console.log("✨ initialising empty git repo...")
-    childProcess.exec("pwd", {
+    childProcess.exec("cd", {
             cwd: project
         }, 
         (error, stdout, stderr) => {
