@@ -59,7 +59,7 @@ async function newRepo(name, private){
         if (err) throw err;
     })
     console.log("✨ initialising empty git repo...")
-    childProcess.exec("cd", {
+    childProcess.exec(`cd ${project}`, {
             cwd: project
         }, 
         (error, stdout, stderr) => {
@@ -69,6 +69,7 @@ async function newRepo(name, private){
             childProcess.exec("git commit -m '🎉 initial commit'");
             childProcess.exec(`git remote add origin https://github.com/${USERNAME}/${name}.git`);
             childProcess.exec("git push");
+            console.log(stdout)
         }
     )
     console.log(`🎉 done! project ${name} is online...`)
