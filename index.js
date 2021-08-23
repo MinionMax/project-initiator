@@ -5,6 +5,7 @@ const dotenv = require("dotenv").config();
 const childProcess = require("child_process");
 const fs = require("fs");
 const path = require("path");
+const { stdout } = require("process");
 const argv = require("minimist")(process.argv.slice(2));
 const TOKEN = process.env.TOKEN;
 const USERNAME = process.env.USERNAME;
@@ -45,34 +46,26 @@ argumentValid(argv);
 
 async function newRepo(name, private){
     const project = path.join(PROJECTPATH, name);
-    console.log(project)
     console.log("🚚 connecting to github...");
     await octokit.rest.repos.createForAuthenticatedUser({
         name: name,
         private: private
     })
     fs.mkdirSync(project);
-    fs.writeFile(path.join(project + "/README.md"), `# ${name}`, (err) => {
+    fs.writeFileSync(path.join(project + "/README.md"), `# ${name}`, (err) => {
         if (err) throw err;
     })
     fs.writeFile(path.join(project + "/.gitignore"),"", (err) => {
         if (err) throw err;
     })
     console.log("✨ initialising empty git repo...")
-    childProcess.exec(`cd ${project}`, {
-            cwd: project
-        }, 
-        (error, stdout, stderr) => {
-            if(error) console.log(error)
-            childProcess.exec("git init");
-            childProcess.exec("git add .");
-            childProcess.exec("git commit -m '🎉 initial commit'");
-            childProcess.exec(`git remote add origin https://github.com/${USERNAME}/${name}.git`);
-            childProcess.exec("git push");
-            console.log(stdout)
-        }
-    )
-    console.log(`🎉 done! project ${name} is online...`)
+    var cdCommand = `cd ${project} && `;
+    childProcess.execSync(cdCommand + "git init");
+    childProcess.execSync(cdCommand + "git add .");
+    childProcess.execSync(cdCommand + "git commit -m '🎉 initial commit'");
+    childProcess.execSync(cdCommand + `git remote add origin https://github.com/${USERNAME}/${name}.git`);
+    childProcess.execSync(cdCommand + "git push -u origin master");
+    console.log(`🎉 done! project ${name} is online!`)
 
 }
 
