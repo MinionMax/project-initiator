@@ -54,14 +54,15 @@ async function newRepo(name, private){
     fs.writeFile(path.join(project + "/README.md"), `# ${name}`, (err) => {
         if (err) throw err;
     })
-    fs.writeFile(path.join(project + ".gitignore"),"", (err) => {
+    fs.writeFile(path.join(project + "/.gitignore"),"", (err) => {
         if (err) throw err;
     })
     console.log("✨ initialising empty git repo...")
     childProcess.exec("pwd", {
             cwd: project
         }, 
-        () => {
+        (error, stdout, stderr) => {
+            if(error) console.log(error)
             childProcess.exec("git init");
             childProcess.exec("git add .");
             childProcess.exec("git commit -m '🎉 initial commit'");
