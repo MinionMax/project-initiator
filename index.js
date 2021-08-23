@@ -45,6 +45,7 @@ argumentValid(argv);
 
 async function newRepo(name, private){
     const project = path.join(PROJECTPATH, name);
+    console.log(project)
     console.log("🚚 connecting to github...");
     await octokit.rest.repos.createForAuthenticatedUser({
         name: name,
