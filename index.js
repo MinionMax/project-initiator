@@ -42,8 +42,9 @@ function argumentValid(argv){
             launchSetup();
         break;
         default:
-           if(!help) console.error("error in argument parsing, use 'project -h' for available commands");
+           if(!help) console.error("error in parsing arguments, use 'project -h' for available commands");
            else if(help) provideHelp();
+           process.exit();
         break;
     }
 
@@ -149,5 +150,4 @@ function provideHelp(){
         - '-s' -> available for 'new', enables silent mode (ide/browser will not open)
         
     `);
-    process.exit();
 }

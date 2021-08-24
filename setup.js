@@ -24,15 +24,13 @@ function tryGetUsername(){
 tryGetUsername();
 
 function inputDestinationFolder(){
-    clearScreen();
     rl.question(chalk`
-            {yellow please enter the path to your coding projects folder...}
+        {yellow please enter the path to your coding projects folder...}
 
-            {gray you may also drag and drop the folder into the terminal}
+        {gray you may also drag and drop the folder into the terminal}
         `,
         (path) => {
             pathString = `PROJECTPATH="${path.trim()}"\n`
-            clearScreen();
             inputToken();
         }
     )
@@ -41,12 +39,11 @@ function inputDestinationFolder(){
 function inputName(){
     rl.question(chalk.yellow`
 
-            please enter your github username below...
+        please enter your github username below...
 
         `, 
         (username) => {
             nameString = `USERNAME="${username}"\n`
-            clearScreen()
             inputDestinationFolder();
         }
     )
@@ -74,11 +71,11 @@ function inputToken(){
     )
 }
 
-function clearScreen(){
-    var lines = process.stdout.getWindowSize()[1];
-    for(var i = 0; i < lines; i++) {
-        console.log('\r\n');
-    }
-}
+// function clearScreen(){
+//     var lines = process.stdout.getWindowSize()[1];
+//     for(var i = 0; i < lines; i++) {
+//         console.log('\r\n');
+//     }
+// }
 
 
