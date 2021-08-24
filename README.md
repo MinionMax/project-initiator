@@ -8,6 +8,7 @@ It creates a folder in your destined projects folder, creates a readme and commi
 ### prequirements
 - node.js
 - a github account
+
 ### installation
 open your terminal and run
 ```sh
@@ -16,6 +17,17 @@ npm install -g MinionMax/project-initiator
 if this fails you may need to run it as an administrator.<br>
 the setup will then automatically start.
 follow the instructions and you'll be fiiiiine.
+
+### usage
+to see all available commands you may also run
+```sh
+project -h
+```
+| argument | result                                        | flags                                                                             | example                             |
+|----------|-----------------------------------------------|-----------------------------------------------------------------------------------|-------------------------------------|
+| new      | create a new repo locally and on github       | -p: toggle private on github; -s: toggle silent mode (browser/ide will not open); | ```sh project new <name> -p -s  ``` |
+| del      | delete the given repo locally and from github | none                                                                              | ```sh project del <name>  ```       |
+| setup    | relaunch setup process of the CLI             | none                                                                              | ```sh project setup  ```            |
 
 
 _happy coding_
