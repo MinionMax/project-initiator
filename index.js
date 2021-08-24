@@ -139,13 +139,13 @@ function question(q){
 
 function provideHelp(){
     console.log(chalk`
-        {blue ===AVAILABLE ARGUMENTS===}
+        {blueBright ===AVAILABLE ARGUMENTS===}
         {yellow (usage: project <...>)}
         - 'new <name>' -> creates an initial repo locally and github
         - 'del <name>' -> deletes repo lacally and github (with confirmation)
         - 'setup' -> relaunches setup process
 
-        {blue ===AVAILABLE FLAGS===}
+        {blueBright ===AVAILABLE FLAGS===}
         - '-p' -> available for 'new', makes the repo private
         - '-s' -> available for 'new', enables silent mode (ide/browser will not open)
         

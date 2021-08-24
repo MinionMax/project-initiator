@@ -7,7 +7,6 @@ It creates a folder in your destined projects folder, creates a readme and commi
 ## get started
 ### prequirements
 - node.js
-- yarn
 - a github account
 ### installation
 open your terminal and run
