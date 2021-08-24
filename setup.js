@@ -16,7 +16,7 @@ function tryGetUsername(){
             // console.log(err)
             inputName();
         } 
-        var name =stdout.replace(/\n$/, '')
+        var name = stdout.replace(/\n$/, '')
         nameString = `USERNAME="${name}"\n`
         inputDestinationFolder();
     })

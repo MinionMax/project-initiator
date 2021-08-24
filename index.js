@@ -4,9 +4,10 @@ const { Octokit } = require("@octokit/rest");
 const dotenv = require("dotenv").config();
 const childProcess = require("child_process");
 const fs = require("fs");
+const open = require("open");
 const path = require("path");
-const { stdout } = require("process");
 const argv = require("minimist")(process.argv.slice(2));
+const chalk = require("chalk");
 const TOKEN = process.env.TOKEN;
 const USERNAME = process.env.USERNAME;
 const PROJECTPATH = process.env.PROJECTPATH;
@@ -23,11 +24,12 @@ function argumentValid(argv){
     const name = argv._[1]
     const private = argv.p;
     const help = argv.h;
+    const local = argv.l
 
 
     switch(argument){
         case "new":
-            newRepo(name, private);
+            newRepo(name, private, local);
         break;
         case "del":
             deleteRepo(name);
@@ -44,13 +46,16 @@ function argumentValid(argv){
 }
 argumentValid(argv);
 
-async function newRepo(name, private){
+async function newRepo(name, private, local){
+
     const project = path.join(PROJECTPATH, name);
-    console.log("🚚 connecting to github...");
+
+    console.log(chalk.gray("[1/3]"), "🚚 connecting to github...");
     await octokit.rest.repos.createForAuthenticatedUser({
         name: name,
         private: private
-    })
+    });
+
     fs.mkdirSync(project);
     fs.writeFileSync(path.join(project + "/README.md"), `# ${name}`, (err) => {
         if (err) throw err;
@@ -58,14 +63,20 @@ async function newRepo(name, private){
     fs.writeFile(path.join(project + "/.gitignore"),"", (err) => {
         if (err) throw err;
     })
-    console.log("✨ initialising empty git repo...")
-    var cdCommand = `cd ${project} && `;
-    childProcess.execSync(cdCommand + "git init");
-    childProcess.execSync(cdCommand + "git add .");
-    childProcess.execSync(cdCommand + "git commit -m '🎉 initial commit'");
-    childProcess.execSync(cdCommand + `git remote add origin https://github.com/${USERNAME}/${name}.git`);
-    childProcess.execSync(cdCommand + "git push -u origin master");
-    console.log(`🎉 done! project ${name} is online!`)
+
+    console.log(chalk.gray("[2/3]"), "✨ initialising empty git repo...")
+    childProcess.execSync(
+        `cd ${project} && ` +
+        "git init && " +
+        "git add . && " +
+        "git commit -m '🎉 initial commit' && " +
+        `git remote add origin https://github.com/${USERNAME}/${name}.git && ` +
+        "git push -u origin master && " +
+        "code ."
+    );
+
+    console.log(chalk.gray("[3/3]"),`🎉 done! project ${name} is online!`);
+    if(!local) open(`https://github.com/${USERNAME}/${name}.git`);
 
 }
 
