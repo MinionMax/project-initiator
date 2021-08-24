@@ -149,5 +149,7 @@ function provideHelp(){
         - '-p' -> available for 'new', makes the repo private
         - '-s' -> available for 'new', enables silent mode (ide/browser will not open)
         
+        {gray for more info see:
+        https://github.com/MinionMax/project-initiator/blob/master/README.md#usage}
     `);
 }
