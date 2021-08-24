@@ -1,7 +1,7 @@
 const fs = require("fs");
 const { exec } = require("child_process");
 const chalk = require("chalk");
-const readline = require("readline").createInterface({
+const rl = require("readline").createInterface({
     input: process.stdin,
     output: process.stdout
 });
@@ -25,7 +25,7 @@ tryGetUsername();
 
 function inputDestinationFolder(){
     clearScreen();
-    readline.question(chalk`
+    rl.question(chalk`
             {yellow please enter the path to your coding projects folder...}
 
             {gray you may also drag and drop the folder into the terminal}
@@ -39,7 +39,7 @@ function inputDestinationFolder(){
 }
 
 function inputName(){
-    readline.question(chalk.yellow`
+    rl.question(chalk.yellow`
 
             please enter your github username below...
 
@@ -53,7 +53,7 @@ function inputName(){
 }
 
 function inputToken(){
-    readline.question(chalk`
+    rl.question(chalk`
         {yellow please enter your github personal access token below...}
 
         {gray for info on how to generate your token please visit this link:
