@@ -1,0 +1,21 @@
+{
+  "name": "project-initiator",
+  "version": "2.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/MinionMax/project-initiator.git",
+  "author": "MinionMax <maxime.mion@gmx.de>",
+  "license": "MIT",
+  "scripts": {
+    "postinstall": "node setup.js"
+  },
+  "bin": {
+    "project": "index.js"
+  },
+  "dependencies": {
+    "@octokit/rest": "^18.9.1",
+    "chalk": "^4.1.2",
+    "dotenv": "^10.0.0",
+    "minimist": "^1.2.5",
+    "open": "^8.2.1"
+  }
+}
