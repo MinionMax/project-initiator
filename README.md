@@ -17,9 +17,9 @@ npm install -g MinionMax/project-initiator
 if this fails you may need to run it as an administrator.<br>
 the setup will then automatically start.<br>
 in case it doesn't start on install, run
-```sh
+`
 project setup
-```
+`
 follow the instructions and you'll be fiiiiine.
 
 ### usage
