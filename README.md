@@ -29,7 +29,7 @@ project -h
 ```
 | argument | result                                        | flags                                                                             | example                             |
 |----------|-----------------------------------------------|-----------------------------------------------------------------------------------|-------------------------------------|
-| new      | create a new repo locally and on github       | -p: toggle private on github; -s: toggle silent mode (browser/ide will not open); | ```project new <name> -p -s  ``` |
+| new      | create a new repo locally and on github       | -p: toggle private on github;<br> -s: toggle silent mode (browser/ide will not open); | ```project new <name> -p -s  ``` |
 | del      | delete the given repo locally and from github | none                                                                              | ```project del <name>  ```       |
 | setup    | relaunch setup process of the CLI             | none                                                                              | ```project setup  ```            |
 
