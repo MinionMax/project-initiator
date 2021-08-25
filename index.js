@@ -115,7 +115,7 @@ async function deleteRepo(name){
 }
 
 function launchSetup(){
-    childProcess.fork("./setup.js");
+    childProcess.fork(path.join(__dirname, "/setup.js"));
 }
 
 function question(q){
