@@ -13,12 +13,12 @@ const rl = require("readline").createInterface({
 });
 const chalk = require("chalk");
 const TOKEN = process.env.TOKEN;
-const USERNAME = process.env.USERNAME;
+const GHUSERNAME = process.env.GHUSERNAME;
 const PROJECTPATH = process.env.PROJECTPATH;
 
 const octokit = new Octokit({
     auth: TOKEN,
-    userAgent: USERNAME,
+    userAgent: GHUSERNAME,
     baseUrl: 'https://api.github.com',
 })
 
@@ -52,7 +52,7 @@ function argumentValid(argv){
 argumentValid(argv);
 
 async function newRepo(name, private, silent){
-
+    
     const project = path.join(PROJECTPATH, name);
 
     console.log(chalk.gray("[1/3]"), "🚚 connecting to github...");
@@ -74,14 +74,14 @@ async function newRepo(name, private, silent){
         `cd ${project} && ` +
         "git init && " +
         "git add . && " +
-        "git commit -m '🎉 initial commit' && " +
-        `git remote add origin https://github.com/${USERNAME}/${name}.git && ` +
+        'git commit -m "🎉 initial commit" && ' +
+        `git remote add origin https://github.com/${GHUSERNAME}/${name}.git && ` +
         "git push -u origin master"
     );
 
     console.log(chalk.gray("[3/3]"),`🎉 done! project ${name} is online!`);
     if(!silent){
-        open(`https://github.com/${USERNAME}/${name}.git`);
+        open(`https://github.com/${GHUSERNAME}/${name}.git`);
         childProcess.exec(`cd ${project} && code .`)
     } 
     process.exit()
@@ -101,7 +101,7 @@ async function deleteRepo(name){
 
     console.log(chalk.gray("[1/3]"), "🚚 connecting to github...");
     await octokit.rest.repos.delete({
-        owner: USERNAME,
+        owner: GHUSERNAME,
         repo: name
     });
 
