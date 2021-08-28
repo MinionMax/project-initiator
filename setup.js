@@ -17,7 +17,7 @@ function tryGetUsername(){
             inputName();
         } 
         var name = stdout.replace(/\n$/, '')
-        nameString = `USERNAME="${name}"\n`
+        nameString = `GHUSERNAME="${name}"\n`
         inputDestinationFolder();
     })
 }
@@ -43,7 +43,7 @@ function inputName(){
 
         `, 
         (username) => {
-            nameString = `USERNAME="${username}"\n`
+            nameString = `GHUSERNAME="${username}"\n`
             inputDestinationFolder();
         }
     )
