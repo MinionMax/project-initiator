@@ -71,11 +71,4 @@ function inputToken(){
     )
 }
 
-// function clearScreen(){
-//     var lines = process.stdout.getWindowSize()[1];
-//     for(var i = 0; i < lines; i++) {
-//         console.log('\r\n');
-//     }
-// }
-
-
+exports.tryGetUsername = tryGetUsername
