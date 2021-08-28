@@ -7,8 +7,9 @@ const rl = require("readline").createInterface({
 });
 
 // acts as a global variable that will end up in .env file
-var nameString = ""
-var pathString = ""
+var nameString = "";
+var pathString = "";
+var IDEstring = "";
 
 function tryGetUsername(){
     exec("git config user.name", (err, stdout, stderr) => {
@@ -31,7 +32,7 @@ function inputDestinationFolder(){
         `,
         (path) => {
             pathString = `PROJECTPATH="${path.trim()}"\n`
-            inputToken();
+            inputIDE();
         }
     )
 }
@@ -49,6 +50,24 @@ function inputName(){
     )
 }
 
+function inputIDE(){
+    rl.question(chalk`
+
+        {yellow the CLI will open the new project in your IDE automatically.
+        in case you would like to have this feature, please enter the corresponding command below...}
+
+        {gray options are:
+        code, atom, subl, mate
+
+        also make sure these commands are installed in your path}
+
+    `, 
+    (ide) => {
+        IDEstring = `IDE="${ide}"\n`
+        inputToken();
+    }
+)
+}
 function inputToken(){
     rl.question(chalk`
         {yellow please enter your github personal access token below...}
@@ -61,7 +80,7 @@ function inputToken(){
 
         `,
         (token) => {
-            var finalEnvString = nameString + pathString + `TOKEN="${token}"`
+            var finalEnvString = nameString + pathString + IDEstring + `TOKEN="${token}"`
             fs.writeFile(".env", finalEnvString, (err) =>{
                 if(err) throw err;
                 console.log(chalk.green("\nsetup complete!"));

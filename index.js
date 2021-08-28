@@ -16,6 +16,7 @@ const chalk = require("chalk");
 const TOKEN = process.env.TOKEN;
 const GHUSERNAME = process.env.GHUSERNAME;
 const PROJECTPATH = process.env.PROJECTPATH;
+const IDE = process.env.IDE;
 
 const octokit = new Octokit({
     auth: TOKEN,
@@ -83,7 +84,7 @@ async function newRepo(name, private, silent){
     console.log(chalk.gray("[3/3]"),`🎉 done! project ${name} is online!`);
     if(!silent){
         open(`https://github.com/${GHUSERNAME}/${name}.git`);
-        childProcess.exec(`cd ${project} && code .`)
+        if(IDE) childProcess.exec(`cd ${project} && code .`);
     } 
     process.exit()
 
