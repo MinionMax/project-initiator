@@ -3,7 +3,8 @@ const { exec } = require("child_process");
 const chalk = require("chalk");
 const rl = require("readline").createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
+    terminal: false
 });
 
 // acts as a global variable that will end up in .env file
