@@ -11,7 +11,6 @@ const rl = require("readline").createInterface({
     input: process.stdin,
     output: process.stdout
 });
-const setup = require("./setup")
 const chalk = require("chalk");
 const TOKEN = process.env.TOKEN;
 const GHUSERNAME = process.env.GHUSERNAME;
@@ -117,7 +116,7 @@ async function deleteRepo(name){
 }
 
 function launchSetup(){
-    // setup.tryGetUsername()
+    const setup = require("./setup")
 }
 
 function question(q){
