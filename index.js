@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const { Octokit } = require("@octokit/rest");
-const dotenv = require("dotenv").config();
+const dotenv = require("dotenv").config({path: __dirname + "/.env"});
 const childProcess = require("child_process");
 const fs = require("fs");
 const open = require("open");
@@ -30,7 +30,7 @@ function argumentValid(argv){
     const name = argv._[1]
     const private = argv.p;
     const help = argv.h;
-    const silent = argv.s
+    const silent = argv.s;
 
 
     switch(argument){
@@ -44,7 +44,7 @@ function argumentValid(argv){
             launchSetup();
         break;
         default:
-           if(!help) console.error("error in parsing arguments, use 'project -h' for available commands");
+           if(!help) console.error(chalk.red("error in parsing arguments, use 'project -h' for available commands"));
            else if(help) provideHelp();
            process.exit();
         break;
@@ -83,8 +83,8 @@ async function newRepo(name, private, silent){
 
     console.log(chalk.gray("[3/3]"),`🎉 done! project ${name} is online!`);
     if(!silent){
-        open(`https://github.com/${GHUSERNAME}/${name}.git`);
-        if(IDE) childProcess.exec(`cd ${project} && code .`);
+        await open(`https://github.com/${GHUSERNAME}/${name}.git`);
+        if(IDE) childProcess.execSync(`cd ${project} && ${IDE} .`);
     } 
     process.exit()
 
@@ -117,7 +117,7 @@ async function deleteRepo(name){
 }
 
 function launchSetup(){
-    setup.tryGetUsername()
+    // setup.tryGetUsername()
 }
 
 function question(q){
