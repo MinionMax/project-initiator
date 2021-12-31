@@ -163,6 +163,7 @@ function provideHelp(){
         {yellow (usage: project <...>)}
         - 'new <name>' -> creates an initial repo locally and github
         - 'del <name>' -> deletes repo lacally and github (with confirmation)
+        - 'dev <name>' -> launches a development environment for an existing project
         - 'setup' -> relaunches setup process
 
         {blueBright ===AVAILABLE FLAGS===}

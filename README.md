@@ -27,11 +27,11 @@ to see all available commands you may also run
 ```sh
 project -h
 ```
-| argument | result                                        | flags                                                                             | example                             |
-|----------|-----------------------------------------------|-----------------------------------------------------------------------------------|-------------------------------------|
-| new      | create a new repo locally and on github       | -p: toggle private on github;<br> -s: toggle silent mode (browser/ide will not open); | ```project new <name> -p -s  ``` |
-| del      | delete the given repo locally and from github | none                                                                              | ```project del <name>  ```       |
-| setup    | relaunch setup process of the CLI             | none                                                                              | ```project setup  ```            |
-
+| argument 	| result                                                   	| flags                                                                             	| example                              	|
+|----------	|----------------------------------------------------------	|-----------------------------------------------------------------------------------	|--------------------------------------	|
+| new      	| create a new repo locally and on github                  	| -p: toggle private on github; -s: toggle silent mode (browser/ide will not open); 	|  ```sh project new <name> -p -s  ``` 	|
+| del      	| delete the given repo locally and from github            	| none                                                                              	| ```sh project del <name>  ```        	|
+| dev      	| launch a development environment for an existing project 	| none                                                                              	| ```sh project dev <name>  ```        	|
+| setup    	| relaunch setup process of the CLI                        	| none                                                                              	| ```sh project setup  ```             	|
 
 _happy coding_
