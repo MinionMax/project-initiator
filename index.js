@@ -42,6 +42,9 @@ function argumentValid(argv){
         case "setup":
             launchSetup();
         break;
+        case "dev":
+            launchDev(name);
+        break;
         default:
            if(!help) console.error(chalk.red("error in parsing arguments, use 'project -h' for available commands"));
            else if(help) provideHelp();
@@ -117,6 +120,22 @@ async function deleteRepo(name){
 
 function launchSetup(){
     const setup = require("./setup")
+}
+
+async function launchDev(name){
+
+    console.log("🧑‍💻 launching development environment...")
+
+    const project = path.join(PROJECTPATH, name);
+
+    if(IDE){
+        childProcess.execSync(`cd ${project} && ${IDE} .`);
+    } else {
+        return console.error(chalk.red("IDE is not set...relaunch CLI setup with 'project setup'"))
+    }
+
+    await open(`https://github.com/${GHUSERNAME}/${name}.git`);
+    process.exit();
 }
 
 function question(q){
