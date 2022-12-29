@@ -6,7 +6,7 @@
   "author": "MinionMax <maxime.mion@gmx.de>",
   "license": "MIT",
   "scripts": {
-    "postinstall": "node setup.js"
+    "postinstall": "npm i && node setup.js"
   },
   "bin": {
     "project": "index.js"

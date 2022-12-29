@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 const { Octokit } = require("@octokit/rest");
-const dotenv = require("dotenv").config({path: __dirname + "/.env"});
+const dotenv = require("dotenv").config({ path: __dirname + "/.env" });
 const childProcess = require("child_process");
 const fs = require("fs");
 const open = require("open");
@@ -9,7 +9,7 @@ const path = require("path");
 const argv = require("minimist")(process.argv.slice(2));
 const rl = require("readline").createInterface({
     input: process.stdin,
-    output: process.stdout
+    output: process.stdout,
 });
 const chalk = require("chalk");
 const TOKEN = process.env.TOKEN;
@@ -20,93 +20,99 @@ const IDE = process.env.IDE;
 const octokit = new Octokit({
     auth: TOKEN,
     userAgent: GHUSERNAME,
-    baseUrl: 'https://api.github.com',
-})
+    baseUrl: "https://api.github.com",
+});
 
-function argumentValid(argv){
-
+function argumentValid(argv) {
     const argument = argv._[0];
-    const name = argv._[1]
+    const name = argv._[1];
     const private = argv.p;
     const help = argv.h;
     const silent = argv.s;
 
-
-    switch(argument){
+    switch (argument) {
         case "new":
             newRepo(name, private, silent);
-        break;
+            break;
         case "del":
             deleteRepo(name);
-        break;
+            break;
         case "setup":
             launchSetup();
-        break;
+            break;
         case "dev":
             launchDev(name);
-        break;
+            break;
+        case "get":
+            cloneRepo(name);
+            break;
         default:
-           if(!help) console.error(chalk.red("error in parsing arguments, use 'project -h' for available commands"));
-           else if(help) provideHelp();
-           process.exit();
-        break;
+            if (!help)
+                console.error(
+                    chalk.red(
+                        "error in parsing arguments, use 'project -h' for available commands"
+                    )
+                );
+            else if (help) provideHelp();
+            process.exit(1);
+            break;
     }
-
 }
 argumentValid(argv);
 
-async function newRepo(name, private, silent){
-    
+async function newRepo(name, private, silent) {
     const project = path.join(PROJECTPATH, name);
 
     console.log(chalk.gray("[1/3]"), "🚚 connecting to github...");
     await octokit.rest.repos.createForAuthenticatedUser({
         name: name,
-        private: private
+        private: private,
     });
 
     fs.mkdirSync(project);
     fs.writeFileSync(path.join(project + "/README.md"), `# ${name}`, (err) => {
         if (err) throw err;
-    })
-    fs.writeFile(path.join(project + "/.gitignore"),"", (err) => {
+    });
+    fs.writeFile(path.join(project + "/.gitignore"), "", (err) => {
         if (err) throw err;
-    })
+    });
 
-    console.log(chalk.gray("[2/3]"), "✨ initialising empty git repo...")
+    console.log(chalk.gray("[2/3]"), "✨ initialising empty git repo...");
     childProcess.execSync(
         `cd ${project} && ` +
-        "git init && " +
-        "git add . && " +
-        'git commit -m "🎉 initial commit" && ' +
-        `git remote add origin https://github.com/${GHUSERNAME}/${name}.git && ` +
-        "git push -u origin master"
+            "git init && " +
+            "git add . && " +
+            'git commit -m "🎉 initial commit" && ' +
+            `git remote add origin https://github.com/${GHUSERNAME}/${name}.git && ` +
+            "git push -u origin main"
     );
 
-    console.log(chalk.gray("[3/3]"),`🎉 done! project ${name} is online!`);
-    if(!silent){
+    console.log(chalk.gray("[3/3]"), `🎉 done! project ${name} is online!`);
+    if (!silent) {
         await open(`https://github.com/${GHUSERNAME}/${name}.git`);
-        if(IDE) childProcess.execSync(`cd ${project} && ${IDE} .`);
-    } 
-    process.exit()
-
+        if (IDE) childProcess.execSync(`cd ${project} && ${IDE} .`);
+    }
+    process.exit();
 }
 
-async function deleteRepo(name){
-
-
-    const yesOrNo = await question(chalk.bgRed.white("💁‍♂️ are you sure? this process is irreversible! (y/n)\n"));
-    if (yesOrNo === "n" || yesOrNo === "no"){
+async function deleteRepo(name) {
+    const yesOrNo = await question(
+        chalk.bgRed.white(
+            "💁‍♂️ are you sure? this process is irreversible! (y/n)\n"
+        )
+    );
+    if (yesOrNo === "n" || yesOrNo === "no") {
         console.log("❌ aborting...");
-        process.exit()
-    } else if (yesOrNo !== "y" && yesOrNo !== "yes") return console.log(chalk.red("please answer with 'y' or 'n'"));
+        process.exit();
+    } else if (yesOrNo !== "y" && yesOrNo !== "yes")
+        return console.log(chalk.red("please answer with 'y' or 'n'"));
 
     const project = path.join(PROJECTPATH, name);
 
     console.log(chalk.gray("[1/3]"), "🚚 connecting to github...");
     await octokit.rest.repos.delete({
         owner: GHUSERNAME,
-        repo: name
+        repo: name,
     });
 
     console.log(chalk.gray("[2/3]"), "🗑  removing local files...");
@@ -114,32 +120,52 @@ async function deleteRepo(name){
         if (err) throw err;
     });
 
-    console.log(chalk.gray("[3/3]"), `🧨 done! project ${name} is on to its way into oblivion!`);
+    console.log(
+        chalk.gray("[3/3]"),
+        `🧨 done! project ${name} is on to its way into oblivion!`
+    );
     process.exit();
 }
 
-function launchSetup(){
-    const setup = require("./setup")
+function launchSetup() {
+    const setup = require("./setup");
 }
 
-async function launchDev(name){
-
-    console.log("🧑‍💻 launching development environment...")
+async function launchDev(name) {
+    console.log("🧑‍💻 launching development environment...");
 
     const project = path.join(PROJECTPATH, name);
 
-    if(IDE){
+    if (IDE) {
+        process.chdir(project);
         childProcess.execSync(`cd ${project} && ${IDE} .`);
     } else {
-        return console.error(chalk.red("IDE is not set...relaunch CLI setup with 'project setup'"))
+        return console.error(
+            chalk.red(
+                "IDE is not set...relaunch CLI setup with 'project setup'"
+            )
+        );
     }
 
     await open(`https://github.com/${GHUSERNAME}/${name}.git`);
     process.exit();
 }
 
-function question(q){
+function cloneRepo(name) {
+    console.log("🚚 fetching resources for repo ", name);
 
+    const project = path.join(PROJECTPATH, name);
+
+    process.chdir(PROJECTPATH);
+
+    childProcess.execSync(
+        `git clone https://github.com/${GHUSERNAME}/${name}.git`
+    );
+
+    process.exit();
+}
+
+function question(q) {
     var response;
 
     rl.setPrompt(q);
@@ -149,15 +175,15 @@ function question(q){
         rl.on("line", (answer) => {
             response = answer.toLowerCase();
             rl.close();
-        })
+        });
 
         rl.on("close", () => {
             resolve(response);
-        })
-    })
+        });
+    });
 }
 
-function provideHelp(){
+function provideHelp() {
     console.log(chalk`
         {blueBright ===AVAILABLE ARGUMENTS===}
         {yellow (usage: project <...>)}
